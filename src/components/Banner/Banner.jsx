@@ -1,5 +1,6 @@
 import { Container, makeStyles, Typography } from '@material-ui/core'
 import React from 'react'
+import Carousel from './Carousel';
 
 
 const useStyles=makeStyles(()=>({
@@ -52,6 +53,7 @@ const classes=useStyles();
     Get all the info regarding your crypto currency
 </Typography>
 </div>
+<Carousel/>
             </Container>
         </div>
     )
