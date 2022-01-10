@@ -11,3 +11,47 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.container {
+  display: flex;
+ 
+}
+.sidebar{
+  width: 30%; 
+  display : flex;
+  flex-direction: column;
+  /* flexDirection: "column", */
+  align-items: center;
+  margin-top: 25px;
+  border-right: 2px solid grey;
+}  
+.heading {
+  font-weight: bold;
+  margin-bottom: 10px;
+  /* fontFamily: "Montserrat", */
+}
+.description{
+    padding:20px;
+    padding-top:0px;
+    padding-bottom:15px;
+    width:100%;
+    text-align:justify;
+
+}
+.marketData{
+    align-self:flex-start;
+    padding:25px;
+    padding-top:10px;
+    width:100%;
+}
+@media only screen and (max-width: 768px) {
+  .container{
+    flex-direction: column;
+    align-items: center;
+    margin: 2px;
+    padding: 2px;
+  }
+  .sidebar{
+    width: 100%;
+  }
+  
+}

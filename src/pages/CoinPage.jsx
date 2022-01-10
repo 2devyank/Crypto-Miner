@@ -1,4 +1,4 @@
-import { Typography ,ThemeProvider, LinearProgress} from '@material-ui/core';
+import { Typography ,ThemeProvider, LinearProgress, createTheme} from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
@@ -24,67 +24,89 @@ useEffect(() => {
 }, [])
 
 
-const useStyles=makeStyles((theme)=>({
-    container: {
-        display: "flex",
-        margin:1,
-        // [theme.breakpoints.down("md")]: {
-        //   flexDirection: "column",
-        //   alignItems: "center",
-        // },
-      },
-      sidebar: {
-        width: "30%",
-        // [theme.breakpoints.down("md")]: {
-        //   width: "100%",
-        // },
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        marginTop: 25,
-        borderRight: "2px solid grey",
-      },
-      heading: {
-        fontWeight: "bold",
-        marginBottom: 10,
-        fontFamily: "Montserrat",
-      },
-      description:{
-          padding:20,
-          paddingTop:0,
-          paddingBottom:15,
-          width:"100%",
-          textAlign:"justify"
+// const useStyles=makeStyles((theme)=>({
+//     container: {
+//         display: "flex",
+//         margin:1,
+//         // [theme.breakpoints.down("md")]: {
+//         //   flexDirection: "column",
+//         //   alignItems: "center",
+//         // },
+//         // [theme.breakpoints.down('md')]: {
+//         //   backgroundColor: 'red',
+//         // },
+//       },
+//       sidebar: {
+//         width: "30%",
+//         // [theme.breakpoints.down('md')]: {
+//         //   width: "100%",
+//         // },
+//         display: "flex",
+//         flexDirection: "column",
+//         alignItems: "center",
+//         marginTop: 25,
+//         borderRight: "2px solid grey",
+//       },   
+//       heading: {
+//         fontWeight: "bold",
+//         marginBottom: 10,
+//         fontFamily: "Montserrat",
+//       },
+//       description:{
+//           padding:20,
+//           paddingTop:0,
+//           paddingBottom:15,
+//           width:"100%",
+//           textAlign:"justify"
 
-      },
-      marketData:{
-          alignSelf:"start",
-          padding:25,
-          paddingTop:10,
-          width:"100%",
-      }
-}))
-
-const classes=useStyles();
+//       },
+//       marketData:{
+//           alignSelf:"start",
+//           padding:25,
+//           paddingTop:10,
+//           width:"100%",
+//       }
+// }))
+// const darkTheme = createTheme({
+//   palette: {
+//     primary: {
+//       main: "#fff",
+//     },
+//     type: "dark",
+//   },
+// });
+// const theme = createTheme({
+//   breakpoints: {
+//     values: {
+//       tablet: 640,
+//       laptop: 1024,
+//       desktop: 1280,
+//     },
+//   },
+// });
+// const classes=useStyles();
 
 if(!coin) return <LinearProgress style={{backgroundColor:"gold"}}/>
     return (
-        <div className={classes.container}>
-          <div className={classes.sidebar}>
+      // <ThemeProvider theme={theme}>
+
+     
+        <div className="container">
+          <div className="sidebar">
           <img src={coin?.image.large} height="200" style={{marginBottom:0}} />
           <Typography
                     variant='h3'
-                    className={classes.heading}
+                    className="heading"
                     style={{ margin: 18 }}
                 >
                    {coin?.name}
                 </Typography>
-                <Typography variant="subtitle1" className={classes.description}>
+                <Typography variant="subtitle1" className="description">
                 {ReactHtmlParser(coin?.description.en.split(". ")[0])}
                 </Typography>
-                <div className={classes.marketData}>
+                <div className="marketData">
           <span style={{ display: "flex" }}>
-            <Typography variant="h5" className={classes.heading}>
+            <Typography variant="h5" className="heading">
               Rank:
             </Typography>
             &nbsp; &nbsp;
@@ -99,7 +121,7 @@ if(!coin) return <LinearProgress style={{backgroundColor:"gold"}}/>
           </span>
 
           <span style={{ display: "flex" }}>
-            <Typography variant="h5" className={classes.heading}>
+            <Typography variant="h5" className="heading">
               Current Price:
             </Typography>
             &nbsp; &nbsp;
@@ -116,7 +138,7 @@ if(!coin) return <LinearProgress style={{backgroundColor:"gold"}}/>
             </Typography>
           </span>
           <span style={{ display: "flex" }}>
-            <Typography variant="h5" className={classes.heading}>
+            <Typography variant="h5" className="heading">
               Market Cap:
             </Typography>
             &nbsp; &nbsp;
@@ -139,6 +161,7 @@ if(!coin) return <LinearProgress style={{backgroundColor:"gold"}}/>
           </div>
 <Coininfo coin={coin}/>
         </div>
+        // </ThemeProvider>
     )
 }
 
